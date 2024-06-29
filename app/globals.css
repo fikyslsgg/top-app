@@ -2,9 +2,11 @@
 	--black: #3b434e;
 	--white: white;
 	--primary-color: #7653fc;
+	--primary-color-hover: #3e1ace;
 	--red: #fc836d;
-	--grenn: #1dc47e;
+	--green: #1dc47e;
 	--green-light: #c8f8e4;
+	--grey-light: #ebebeb;
 	--background-color: #e5e5e5;
 }
 
