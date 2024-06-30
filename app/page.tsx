@@ -5,7 +5,9 @@ export default function Home() {
 		<>
 			<Htag tag='h1'>Текст</Htag>
 			<Button appearance='primary'>Primary</Button>
-			<Button appearance='ghost'>Ghost</Button>
+			<Button appearance='ghost' arrow='right'>
+				Ghost
+			</Button>
 		</>
 	);
 }
