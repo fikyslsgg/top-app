@@ -3,7 +3,7 @@ import styles from './P.module.css';
 import { PProps } from './PProps';
 
 export const P = ({
-	appearance = 'medium',
+	size,
 	children,
 	className,
 	...props
@@ -11,9 +11,8 @@ export const P = ({
 	return (
 		<p
 			className={cn(styles.p, className, {
-				[styles.small]: appearance == 'small',
-				[styles.medium]: appearance == 'medium',
-				[styles.big]: appearance == 'big',
+				[styles.small]: size == 'small',
+				[styles.big]: size == 'big',
 			})}
 			{...props}
 		>
