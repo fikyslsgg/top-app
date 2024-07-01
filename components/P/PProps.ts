@@ -5,6 +5,6 @@ export interface PProps
 		HTMLAttributes<HTMLParagraphElement>,
 		HTMLParagraphElement
 	> {
-	appearance?: 'small' | 'big';
+	size?: 'small' | 'big';
 	children: ReactNode;
 }
