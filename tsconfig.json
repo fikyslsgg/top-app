@@ -22,8 +22,9 @@
 		}
 	},
 	"include": [
+		"additional.d.ts",
+		"new-types.d.ts",
 		"next-env.d.ts",
-		"new-types.d.ts-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts"
