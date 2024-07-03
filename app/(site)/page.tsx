@@ -1,8 +1,9 @@
 import { Button, Htag, P, Rating, Tag } from '@/components';
+import MainLayout from './Main/layout';
 
 export default function Home() {
 	return (
-		<>
+		<MainLayout>
 			<Htag tag='h1'>Текст</Htag>
 			<Button appearance='primary'>Primary</Button>
 			<Button appearance='ghost' arrow='right'>
@@ -27,6 +28,6 @@ export default function Home() {
 			<Tag color='grey'>grey</Tag>
 			<Tag color='primary'>primary</Tag>
 			<Rating rating={4} isEditable={true}></Rating>
-		</>
+		</MainLayout>
 	);
 }
