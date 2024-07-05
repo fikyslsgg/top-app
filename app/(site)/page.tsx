@@ -1,5 +1,5 @@
 import { Button, Htag, P, Rating, Tag } from '@/components';
-import MainLayout from './Main/layout';
+import MainLayout from './Main/Layout';
 
 export default function Home() {
 	return (
