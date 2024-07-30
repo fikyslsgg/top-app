@@ -1,33 +1,16 @@
-import { Button, Htag, P, Rating, Tag } from '@/components';
+import { MenuItem } from '@/interfaces/menu.interface';
 import MainLayout from './Main/Layout';
+import Menu from './components/menu';
 
-export default function Home() {
+export default async function Home() {
 	return (
 		<MainLayout>
-			<Htag tag='h1'>Текст</Htag>
-			<Button appearance='primary'>Primary</Button>
-			<Button appearance='ghost' arrow='right'>
-				Ghost
-			</Button>
-			<P size='big'>
-				Студенты освоят не только hard skills, необходимые для работы
-				веб-дизайнером, но и soft skills — навыки, которые позволят эффективно
-				взаимодействовать в команде с менеджерами, разработчиками и
-				маркетологами. Выпускники факультета могут успешно конкурировать с
-				веб-дизайнерами уровня middle.
-			</P>
-			<P size='small'>
-				Студенты освоят не только hard skills, необходимые для работы
-				веб-дизайнером, но и soft skills — навыки, которые позволят эффективно
-				взаимодействовать в команде с менеджерами, разработчиками и
-				маркетологами. Выпускники факультета могут успешно конкурировать с
-				веб-дизайнерами уровня middle.
-			</P>
-			<Tag color='red'>red</Tag>
-			<Tag color='green'>green</Tag>
-			<Tag color='grey'>grey</Tag>
-			<Tag color='primary'>primary</Tag>
-			<Rating rating={4} isEditable={true}></Rating>
+			<Menu></Menu>
 		</MainLayout>
 	);
+}
+
+export interface HomeProps extends Record<string, unknown> {
+	menu: MenuItem[];
+	firstCategory: number;
 }
