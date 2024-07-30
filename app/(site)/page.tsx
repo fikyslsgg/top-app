@@ -1,5 +1,5 @@
 import { MenuItem } from '@/interfaces/menu.interface';
-import MainLayout from './Main/Layout';
+import MainLayout from './components/Main/Layout';
 import Menu from './components/menu';
 
 export default async function Home() {
