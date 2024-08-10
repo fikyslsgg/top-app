@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import BooksIcon from '../../icons/books-icon.svg';
 import CoursesIcon from '../../icons/courses-icon.svg';
+import LogoIcon from '../../icons/logo-icon.svg';
 import ProductsIcon from '../../icons/products-icon.svg';
 import ServicesIcon from '../../icons/services-icon.svg';
 import styles from './Sidebar.module.css';
@@ -9,6 +10,8 @@ import { SidebarProps } from './Sidebar.props';
 export const Sidebar = ({ ...props }: SidebarProps): JSX.Element => {
 	return (
 		<div {...props}>
+			<LogoIcon />
+			<input type='text' />
 			<ul className={styles.list}>
 				<li className={styles.item}>
 					<CoursesIcon className={styles.img} />
