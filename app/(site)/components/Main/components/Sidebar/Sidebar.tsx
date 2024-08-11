@@ -1,3 +1,4 @@
+import { Input } from '@/components/Input/Input';
 import Link from 'next/link';
 import BooksIcon from '../../icons/books-icon.svg';
 import CoursesIcon from '../../icons/courses-icon.svg';
@@ -11,7 +12,7 @@ export const Sidebar = ({ ...props }: SidebarProps): JSX.Element => {
 	return (
 		<div {...props}>
 			<LogoIcon />
-			<input type='text' />
+			<Input placeholder='Поиск...' />
 			<ul className={styles.list}>
 				<li className={styles.item}>
 					<CoursesIcon className={styles.img} />
