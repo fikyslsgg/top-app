@@ -1,3 +1,4 @@
+import { declOfNum } from '@/helpers/helpers';
 import cn from 'classnames';
 import { Button } from '../Button/Button';
 import { Card } from '../Card/Card';
@@ -42,13 +43,21 @@ export const Product = ({ product }: ProductProps): JSX.Element => {
 			<div className={cn(styles.creditTitle)}>кредит</div>
 			<div className={cn(styles.rateTitle)}>
 				{product.reviewCount}{' '}
-				{declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}отзывов
+				{declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
 			</div>
 			<div>
 				<Divider className={cn(styles.hr)} />
 			</div>
 			<div className={cn(styles.description)}>{product.description}</div>
-			<div className={cn(styles.feature)}>feature</div>
+			<div className={cn(styles.feature)}>
+				{product.characteristics.map(c => (
+					<div className={styles.characteristics} key={c.name}>
+						<span className={styles.characteristicsName}>{c.name}</span>
+						<span className={styles.characteristicsDots}></span>
+						<span className={styles.characteristicsValue}>{c.value}</span>
+					</div>
+				))}
+			</div>
 			<div className={cn(styles.advBlock)}>
 				<div className={cn(styles.advantages)}>
 					<div className={cn(styles.advTitle)}>Преимущества</div>
