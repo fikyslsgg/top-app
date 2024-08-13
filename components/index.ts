@@ -1,4 +1,5 @@
 export * from './Button/Button';
+export * from './Divider/Divider';
 export * from './Htag/Htag';
 export * from './Input/Input';
 export * from './P/P';
