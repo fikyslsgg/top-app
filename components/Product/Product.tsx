@@ -1,5 +1,6 @@
 import { declOfNum } from '@/helpers/helpers';
 import cn from 'classnames';
+import Image from 'next/image';
 import { Button } from '../Button/Button';
 import { Card } from '../Card/Card';
 import { Divider } from '../Divider/Divider';
@@ -12,9 +13,11 @@ export const Product = ({ product }: ProductProps): JSX.Element => {
 	return (
 		<Card className={styles.product}>
 			<div className={cn(styles.logo)}>
-				<img
+				<Image
 					src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
 					alt={product.title}
+					width={70}
+					height={70}
 				/>
 			</div>
 			<div className={cn(styles.title)}>{product.title}</div>
