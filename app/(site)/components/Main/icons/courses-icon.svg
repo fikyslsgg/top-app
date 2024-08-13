@@ -1,0 +1,27 @@
+<svg width="32.000000" height="32.000000" viewBox="0 0 32 32" fill="#787D85" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<filter id="filter_1_27_dd" x="0.000000" y="0.000000" width="32.000000" height="32.000000" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+			<feOffset dx="0" dy="4"/>
+			<feGaussianBlur stdDeviation="1.33333"/>
+			<feComposite in2="hardAlpha" operator="out" k2="-1" k3="1"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+			<feBlend mode="normal" in2="BackgroundImageFix" result="effect_dropShadow_1"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="effect_dropShadow_1" result="shape"/>
+		</filter>
+		<clipPath id="clip1_27">
+			<rect width="24.000000" height="24.000000" transform="translate(4.000000 0.000000)" fill="#787D85" fill-opacity="0"/>
+		</clipPath>
+	</defs>
+	<g filter="url(#filter_1_27_dd)">
+		<rect width="24.000000" height="24.000000" transform="translate(4.000000 0.000000)" fill="#787D85" fill-opacity="0"/>
+		<g clip-path="url(#clip1_27)">
+			<path d="M16 12.89L9.67 10.35L9.67 12.18C9.67 14.19 12.39 15.7 16 15.7C19.6 15.7 22.32 14.19 22.32 12.18L22.32 10.35L16 12.89Z" fill="#787D85" fill-opacity="1.000000" fill-rule="nonzero"/>
+			<path d="M28 16.4C28 15.49 27.41 14.71 26.59 14.42L26.59 7.14L28 6.56L16 1.74L4 6.56L16 11.37L25.18 7.7L25.18 14.42C24.37 14.71 23.78 15.49 23.78 16.4C23.78 17.24 24.27 17.96 24.98 18.3L23.81 21.8L25.15 22.25L25.89 20.03L26.63 22.25L27.96 21.8L26.79 18.3C27.5 17.96 28 17.24 28 16.4Z" fill="#787D85" fill-opacity="1.000000" fill-rule="nonzero"/>
+		</g>
+	</g>
+</svg>

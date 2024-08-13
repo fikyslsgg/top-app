@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+	images: {
+		domains: ['courses-top.ru', 'old-images.hb.ru-msk.vkcs.cloud'],
+	},
 	webpack(config) {
 		const fileLoaderRule = config.module.rules.find(rule =>
 			rule.test?.test?.('.svg')

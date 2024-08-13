@@ -1,0 +1,17 @@
+.list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.img {
+	width: 24px;
+	height: 24px;
+}
+
+.item {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
