@@ -6,6 +6,7 @@ export * from './P/P';
 export * from './Product/Product';
 export * from './Rating/Rating';
 export * from './Review/Review';
+export * from './ReviewForm/ReviewForm';
 export * from './Search/Search';
 export * from './Tag/Tag';
 export * from './Textarea/Textarea';
