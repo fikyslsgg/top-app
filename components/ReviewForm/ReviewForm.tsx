@@ -41,6 +41,7 @@ export const ReviewForm = ({
 									setRating={field.onChange}
 									className={cn(styles.rating)}
 									rating={field.value}
+									ref={field.ref}
 								/>
 							);
 						}}
