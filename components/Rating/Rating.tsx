@@ -14,7 +14,14 @@ import StarIcon from './star-icon.svg';
 
 export const Rating = forwardRef(
 	(
-		{ isEditable = false, rating, setRating, ...props }: RatingProps,
+		{
+			error,
+			isEditable = false,
+			rating,
+			setRating,
+			className,
+			...props
+		}: RatingProps,
 		ref: ForwardedRef<HTMLDivElement>
 	): JSX.Element => {
 		const [ratingArray, setRatingArray] = useState<JSX.Element[]>(
@@ -49,32 +56,41 @@ export const Rating = forwardRef(
 		const constructRating = (currentRating: number) => {
 			const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {
 				return (
-					<span
-						className={cn(styles.star, {
-							[styles.filled]: i < currentRating,
-							[styles.editable]: isEditable,
-						})}
-						onMouseEnter={() => changeDisplay(i + 1)}
-						onMouseLeave={() => changeDisplay(rating)}
-						onClick={() => onclick(i + 1)}
-					>
-						<StarIcon
-							tabIndex={isEditable ? 0 : -1}
-							onKeyDown={(e: KeyboardEvent<SVGElement>) => {
-								isEditable && handleSpace(i + 1, e);
-							}}
-						/>
-					</span>
+					<div>
+						<span
+							className={cn(styles.star, {
+								[styles.filled]: i < currentRating,
+								[styles.editable]: isEditable,
+							})}
+							onMouseEnter={() => changeDisplay(i + 1)}
+							onMouseLeave={() => changeDisplay(rating)}
+							onClick={() => onclick(i + 1)}
+						>
+							<StarIcon
+								tabIndex={isEditable ? 0 : -1}
+								onKeyDown={(e: KeyboardEvent<SVGElement>) => {
+									isEditable && handleSpace(i + 1, e);
+								}}
+							/>
+						</span>
+					</div>
 				);
 			});
 			setRatingArray(updatedArray);
 		};
 
 		return (
-			<div {...props} ref={ref}>
+			<div
+				{...props}
+				ref={ref}
+				className={cn(styles.ratingWrapper, className, {
+					[styles.error]: error,
+				})}
+			>
 				{ratingArray.map((r, i) => (
 					<span key={i}>{r}</span>
 				))}
+				{error && <span className={styles.errorMessages}>{error.message}</span>}
 			</div>
 		);
 	}

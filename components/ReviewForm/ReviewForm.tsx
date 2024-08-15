@@ -47,6 +47,9 @@ export const ReviewForm = ({
 					<span>Оценка:</span>
 					<Controller
 						control={control}
+						rules={{
+							required: { value: true, message: 'Укажите рейтинг' },
+						}}
 						name='rating'
 						render={({ field }) => {
 							return (
@@ -56,6 +59,7 @@ export const ReviewForm = ({
 									className={cn(styles.rating)}
 									rating={field.value}
 									ref={field.ref}
+									error={errors.rating}
 								/>
 							);
 						}}
