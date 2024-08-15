@@ -1,11 +1,14 @@
+import { API } from '@/app/api';
+import axios from 'axios';
 import cn from 'classnames';
+import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import { Rating } from '../Rating/Rating';
 import { Textarea } from '../Textarea/Textarea';
 import CloseIcon from './close-icon.svg';
-import { IReviewForm } from './ReviewForm.interface';
+import { IReviewForm, IReviewSentResponse } from './ReviewForm.interface';
 import styles from './ReviewForm.module.css';
 import { ReviewFormProps } from './ReviewForm.props';
 
@@ -19,10 +22,27 @@ export const ReviewForm = ({
 		control,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm<IReviewForm>();
 
-	const onSubmit = (data: IReviewForm) => {
-		return data;
+	const [isSuccess, setIsSuccess] = useState<boolean>(false);
+	const [error, setError] = useState<string>();
+
+	const onSubmit = async (formData: IReviewForm) => {
+		try {
+			const { data } = await axios.post<IReviewSentResponse>(
+				API.review.createDemo,
+				{ ...formData, productId }
+			);
+			if (data.message) {
+				setIsSuccess(true);
+				reset();
+			} else {
+				setError('Что-то пошло не так');
+			}
+		} catch (e) {
+			setError(e.message);
+		}
 	};
 
 	return (
@@ -80,11 +100,25 @@ export const ReviewForm = ({
 					</span>
 				</div>
 			</div>
-			<div className={cn(styles.success)}>
-				<div className={cn(styles.successTitle)}>Ваш отзыв отправлен</div>
-				<div>спасибо, Ваш отзыв будет опубликован после проверки</div>
-				<CloseIcon className={cn(styles.close)} />
-			</div>
+			{isSuccess && (
+				<div className={cn(styles.success)}>
+					<div className={cn(styles.successTitle)}>Ваш отзыв отправлен</div>
+					<div>спасибо, Ваш отзыв будет опубликован после проверки</div>
+					<CloseIcon
+						className={cn(styles.close)}
+						onClick={() => setIsSuccess(false)}
+					/>
+				</div>
+			)}
+			{error && (
+				<div className={cn(styles.error)}>
+					Что-то пошло не так, попробуйте обновить страницу
+					<CloseIcon
+						className={cn(styles.close)}
+						onClick={() => setError(undefined)}
+					/>
+				</div>
+			)}
 		</form>
 	);
 };
