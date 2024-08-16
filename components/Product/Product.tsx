@@ -1,7 +1,7 @@
 import { declOfNum } from '@/helpers/helpers';
 import cn from 'classnames';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Button } from '../Button/Button';
 import { Card } from '../Card/Card';
 import { Divider } from '../Divider/Divider';
@@ -12,11 +12,24 @@ import { Tag } from '../Tag/Tag';
 import styles from './Product.module.css';
 import { ProductProps } from './ProductProps';
 
-export const Product = ({ product }: ProductProps): JSX.Element => {
+export const Product = ({
+	product,
+	className,
+	...props
+}: ProductProps): JSX.Element => {
 	const [isReviewOpened, setisReviewOpened] = useState<boolean>(false);
+	const reviewRef = useRef<HTMLDivElement>(null);
+
+	const scrollToReview = () => {
+		setisReviewOpened(true);
+		reviewRef.current?.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start',
+		});
+	};
 
 	return (
-		<>
+		<div className={className} {...props}>
 			<Card className={styles.product}>
 				<div className={cn(styles.logo)}>
 					<Image
@@ -51,8 +64,10 @@ export const Product = ({ product }: ProductProps): JSX.Element => {
 				<div className={cn(styles.priceTitle)}>цена</div>
 				<div className={cn(styles.creditTitle)}>кредит</div>
 				<div className={cn(styles.rateTitle)}>
-					{product.reviewCount}{' '}
-					{declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+					<a href='#' onClick={scrollToReview}>
+						{product.reviewCount}+
+						{declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+					</a>
 				</div>
 				<div>
 					<Divider className={cn(styles.hr)} />
@@ -100,6 +115,7 @@ export const Product = ({ product }: ProductProps): JSX.Element => {
 					[styles.opened]: isReviewOpened,
 					[styles.closed]: !isReviewOpened,
 				})}
+				ref={reviewRef}
 			>
 				{product.reviews.map(r => (
 					<div key={r._id}>
@@ -109,6 +125,6 @@ export const Product = ({ product }: ProductProps): JSX.Element => {
 				))}
 				<ReviewForm productId={product._id} />
 			</Card>
-		</>
+		</div>
 	);
 };
