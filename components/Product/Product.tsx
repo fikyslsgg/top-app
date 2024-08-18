@@ -1,3 +1,5 @@
+'use client';
+
 import { declOfNum } from '@/helpers/helpers';
 import cn from 'classnames';
 import { motion } from 'framer-motion';

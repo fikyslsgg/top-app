@@ -1,3 +1,5 @@
+'use client';
+
 import { API } from '@/app/api';
 import axios from 'axios';
 import cn from 'classnames';

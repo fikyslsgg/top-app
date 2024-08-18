@@ -1,7 +1,9 @@
+'use client';
+
 import { useScrollY } from '@/hooks/useScrollY';
 import { motion, useAnimation } from 'framer-motion';
 import { useEffect } from 'react';
-import styles from './P.module.css';
+import styles from './Up.module.css';
 import UpIcon from './up-icon.svg';
 
 export const Up = (): JSX.Element => {
