@@ -1,7 +1,7 @@
 import { ButtonIcon } from '@/components/ButtonIcon/ButtonIcon';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import LogoIcon from '../../icons/logo-icon.svg';
 import { Sidebar } from '../Sidebar/Sidebar';
