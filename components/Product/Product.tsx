@@ -57,18 +57,24 @@ export const Product = motion(
 						</div>
 						<div className={cn(styles.title)}>{product.title}</div>
 						<div className={cn(styles.price)}>
-							{product.price}
+							<span className='visyallyHidden'>Цена</span>
+							<span>{product.price}</span>
 							{product.oldPrice && (
 								<Tag className={cn(styles.oldPrice)} color='green'>
-									{product.price - product.oldPrice}
+									<span className='visyallyHidden'>Скидка</span>
+									<span>{product.price - product.oldPrice}</span>
 								</Tag>
 							)}
 						</div>
 						<div className={cn(styles.credit)}>
-							{product.credit} /{' '}
+							<span className='visyallyHidden'>Кредит</span>
+							<span>{product.credit}</span>
 							<span className={cn(styles.month)}>месяцы</span>
 						</div>
 						<div className={cn(styles.rating)}>
+							<span className='visyallyHidden'>
+								{'Рейтинг' + (product.reviewAvg ?? product.initialRating)}
+							</span>
 							<Rating rating={product.reviewAvg ?? product.initialRating} />
 						</div>
 						<div className={cn(styles.tags)}>
@@ -78,8 +84,12 @@ export const Product = motion(
 								</Tag>
 							))}
 						</div>
-						<div className={cn(styles.priceTitle)}>цена</div>
-						<div className={cn(styles.creditTitle)}>кредит</div>
+						<div className={cn(styles.priceTitle)} aria-hidden='true'>
+							цена
+						</div>
+						<div className={cn(styles.creditTitle)} aria-hidden='true'>
+							кредит
+						</div>
 						<div className={cn(styles.rateTitle)}>
 							<a href='#' onClick={scrollToReview}>
 								{product.reviewCount}+
