@@ -7,6 +7,17 @@ export const metadata: Metadata = {
 	title: 'page',
 };
 
+export async function generateMetadata({
+	params,
+}: {
+	params: { alias: string };
+}): Promise<Metadata> {
+	const page = await getPage(params.alias);
+	return {
+		title: page?.metaTitle,
+	};
+}
+
 export async function generateStaticParams() {
 	const menu = await getMenu(0);
 	return menu.flatMap(item => item.pages.map(page => ({ alias: page.alias })));
