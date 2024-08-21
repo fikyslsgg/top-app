@@ -1,3 +1,5 @@
+'use client';
+
 import { API } from '@/app/api';
 import axios from 'axios';
 import cn from 'classnames';
@@ -15,6 +17,7 @@ import { ReviewFormProps } from './ReviewForm.props';
 export const ReviewForm = ({
 	productId,
 	className,
+	isOpened,
 	...props
 }: ReviewFormProps): JSX.Element => {
 	const {
@@ -23,6 +26,7 @@ export const ReviewForm = ({
 		handleSubmit,
 		formState: { errors },
 		reset,
+		clearErrors,
 	} = useForm<IReviewForm>();
 
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -54,6 +58,8 @@ export const ReviewForm = ({
 					})}
 					placeholder='Имя'
 					error={errors.name}
+					tabIndex={isOpened ? 1 : -1}
+					aria-invalid={errors.name ? true : false}
 				/>
 				<Input
 					{...register('title', {
@@ -62,6 +68,8 @@ export const ReviewForm = ({
 					placeholder='Заголовок отзыва'
 					error={errors.title}
 					className={cn(styles.title)}
+					tabIndex={isOpened ? 1 : -1}
+					aria-invalid={errors.title ? true : false}
 				/>
 				<div>
 					<span>Оценка:</span>
@@ -80,6 +88,7 @@ export const ReviewForm = ({
 									rating={field.value}
 									ref={field.ref}
 									error={errors.rating}
+									tabIndex={isOpened ? 1 : -1}
 								/>
 							);
 						}}
@@ -92,31 +101,46 @@ export const ReviewForm = ({
 					placeholder='Текст отзыва'
 					className={cn(styles.description)}
 					error={errors.description}
+					tabIndex={isOpened ? 1 : -1}
+					aria-label='Текст отзыва'
+					aria-invalid={errors.description ? true : false}
 				/>
 				<div className={cn(styles.submit)}>
-					<Button appearance='primary'>Отправить</Button>
+					<Button
+						appearance='primary'
+						tabIndex={isOpened ? 1 : -1}
+						onClick={() => clearErrors()}
+					>
+						Отправить
+					</Button>
 					<span className={cn(styles.info)}>
 						Перед публикацией отзыв пройдет предварительную модерацию и проверку
 					</span>
 				</div>
 			</div>
 			{isSuccess && (
-				<div className={cn(styles.success)}>
+				<div className={cn(styles.success)} role='alert'>
 					<div className={cn(styles.successTitle)}>Ваш отзыв отправлен</div>
-					<div>спасибо, Ваш отзыв будет опубликован после проверки</div>
-					<CloseIcon
+					<div>Cпасибо, Ваш отзыв будет опубликован после проверки</div>
+					<button
+						aria-label='Закрыть оповещение'
 						className={cn(styles.close)}
 						onClick={() => setIsSuccess(false)}
-					/>
+					>
+						<CloseIcon />
+					</button>
 				</div>
 			)}
 			{error && (
-				<div className={cn(styles.error)}>
+				<div className={cn(styles.error)} role='alert'>
 					Что-то пошло не так, попробуйте обновить страницу
-					<CloseIcon
-						className={cn(styles.close)}
+					<button
 						onClick={() => setError(undefined)}
-					/>
+						className={cn(styles.close)}
+						aria-label='Закрыть оповещение'
+					>
+						<CloseIcon />
+					</button>
 				</div>
 			)}
 		</form>

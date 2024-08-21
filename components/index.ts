@@ -10,3 +10,4 @@ export * from './ReviewForm/ReviewForm';
 export * from './Search/Search';
 export * from './Tag/Tag';
 export * from './Textarea/Textarea';
+export * from './Up/Up';

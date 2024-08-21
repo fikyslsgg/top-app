@@ -34,6 +34,10 @@
 	white-space: nowrap;
 }
 
+.rateTitle a {
+	color: var(--primary-color);
+}
+
 .hr,
 .description,
 .actions {
@@ -69,6 +73,11 @@
 
 .rating {
 	align-self: flex-end;
+}
+
+.reviews {
+	overflow: hidden;
+	padding: 30px;
 }
 
 .priceTitle,
@@ -269,15 +278,4 @@
 			'hr2'
 			'action';
 	}
-}
-
-.closed {
-	overflow: hidden;
-	max-height: 0;
-	padding: 0;
-}
-
-.opened {
-	max-height: auto;
-	padding: 30px;
 }
