@@ -131,6 +131,7 @@ export const Product = motion(
 								arrow={isReviewOpened ? 'down' : 'right'}
 								className={cn(styles.reviewButton)}
 								onClick={() => setisReviewOpened(!isReviewOpened)}
+								aria-expanded={isReviewOpened}
 							>
 								читать отзывы
 							</Button>
