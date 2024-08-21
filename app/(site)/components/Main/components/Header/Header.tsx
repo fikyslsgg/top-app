@@ -1,6 +1,6 @@
 import { ButtonIcon } from '@/components/ButtonIcon/ButtonIcon';
 import cn from 'classnames';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import LogoIcon from '../../icons/logo-icon.svg';
@@ -11,6 +11,7 @@ import { HeaderProps } from './Header.props';
 export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 	const [isOpened, setIsOpened] = useState<boolean>(false);
 	const router = useRouter();
+	const shouldReducerMotion = useReducedMotion();
 
 	useEffect(() => {
 		setIsOpened(false);
@@ -25,7 +26,7 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 			},
 		},
 		closed: {
-			opacity: 0,
+			opacity: shouldReducerMotion ? 1 : 0,
 			x: '100%',
 		},
 	};
